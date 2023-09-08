@@ -31,7 +31,7 @@
                                         </form>
                                         <hr>
                                         <div class="text-center">
-                                            <a class="small" href="register">Crear cuenta</a>
+                                            <a class="small" style="color: black;" href="register">Crear cuenta</a>
                                         </div>
                                     </div>
                                 </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Category;
 
 class AuthController extends Controller
 {
@@ -15,7 +16,8 @@ class AuthController extends Controller
     }
 
     function menu(){
-        return view('auth.list');
+        $categories = Category::with('products')->get();
+        return view('auth.list', ['categories' => $categories]);
     }
 
     function register(){
@@ -25,4 +27,9 @@ class AuthController extends Controller
     function attempt(Request $request){
 
     }
+
+    public function categoria()
+{
+    return $this->belongsTo(Categoria::class);
+}
 }
