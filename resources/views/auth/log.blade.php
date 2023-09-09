@@ -12,26 +12,41 @@
                     <div class="card o-hidden border-0 shadow-lg my-5">
                         <div class="card-body p-0">
                             <div class="row">
-                                <div class="col-lg-20">
-                                    <div class="p-5">
+                                <div class="col-lg-12">
+                                    <div class="p-5 rounded">
                                         <div class="text-center">
                                             <h1 class="h4 text-gray-900 mb-4">Iniciar Sesión</h1>
                                         </div>
-                                        <form class="user">
+                                        <form action="{{ route('login.attempt') }}" method="POST">
                                             @csrf
-                                            <div class="form-group">
-                                                <input type="email" class="form-control form-control-user" placeholder="Correo Electronico">
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" id="email" type="text" placeholder="Email" name="email" />
+                                                <label for="email">Email</label>
                                             </div>
-                                            <br>
-                                            <div class="form-group">
-                                                <input type="password" class="form-control form-control-user" placeholder="Contraseña">
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" id="inputPassword" type="password" placeholder="password" name="password" />
+                                                <label for="inputPassword">Contraseña</label>
                                             </div>
-                                            <br>
-                                            <a href="home" class="d-grid btn btn-primary btn-user btn-block">Login</a>
+                                            <div class="form-check mb-3">
+                                                <input class="form-check-input" id="inputRememberPassword" type="checkbox" name="remember" />
+                                                <label class="form-check-label" for="inputRememberPassword">Recordarme</label>
+                                            </div>
+                                            @if ($errors->any())
+                                                <div class="alert alert-danger">
+                                                    <ul>
+                                                        @foreach ($errors->all() as $error)
+                                                            <li>{{ $error }}</li>
+                                                        @endforeach
+                                                    </ul>
+                                                </div>
+                                            @endif
+                                            <div class="d-grid gap-2">
+                                                <button class="btn btn-dark" type="submit">Acceder</button>
+                                            </div>
                                         </form>
                                         <hr>
                                         <div class="text-center">
-                                            <a class="small" style="color: black;" href="register">Crear cuenta</a>
+                                            <a class="small" style="color: black;" href="{{ route('register') }}">Crear cuenta</a>
                                         </div>
                                     </div>
                                 </div>
@@ -41,6 +56,7 @@
                 </div>
             </div>
         </div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
 </body>
 </html>

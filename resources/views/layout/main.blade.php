@@ -6,30 +6,29 @@
     <title>Coffee Time</title>
 </head>
 <body style="background-color: #f0d1a9;">
-     <header>
+    <header>
         <nav class="navbar navbar-expand-lg" style="background-color: #D2B48C;">
             <div class="container-fluid">
                 <a class="navbar-brand">
                     <img src="{{ asset('images/logo.png') }}" width="60">
                 </a>
-
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" style="color: black" href="home">Home</a>
+                            <a class="nav-link" style="color: black" href="{{ route('landing') }}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" style="color: black" href="menu">Menú</a>
+                            <a class="nav-link" style="color: black" href="{{ route('menu') }}">Menú</a>
                         </li>
                     </ul>
                     <form class="d-flex">
-                        <a class="btn btn-outline-dark me-2" href="login">Login</a>
-                        <a class="btn btn-outline-dark" href="register">Sign up</a>
+                       {{--<a style="color: black; margin-right: 10px;" class="me-2">Bienvenido: {{ $user->name }}</a>--}}
+                        <a class="btn btn-outline-dark" href="{{ route('landing') }}">Cerrar Sesión</a>
                     </form>
                 </div>
             </div>
         </nav>
     </header>
-    @yield('landing-content')
+    @yield('main-content')
 </body>
 </html>

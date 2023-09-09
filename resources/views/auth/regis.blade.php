@@ -12,34 +12,54 @@
                     <div class="card o-hidden border-0 shadow-lg my-5">
                         <div class="card-body p-0">
                             <div class="row">
-                                <div class="col-lg-20">
+                                <div class="col-lg-12">
                                     <div class="p-5">
                                         <div class="text-center">
                                             <h1 class="h4 text-gray-900 mb-4">Crear Cuenta</h1>
                                         </div>
-                                        <form class="user">
+                                        <form action="{{ route('register.store') }}" method="post">
                                             @csrf
-                                            <div class="form-group">
-                                                <input type="name" class="form-control form-control-user" placeholder="Nombre">
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" required id="name" type="text" placeholder="Nombres"
+                                                    name="name" />
+                                                <label for="name">Nombres</label>
                                             </div>
-                                            <br>
-                                            <div class="form-group">
-                                                <input type="name" class="form-control form-control-user" placeholder="Apellido">
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" required id="surname" type="text" placeholder="Apellidos"
+                                                    name="surname" />
+                                                <label for="surname">Apellidos</label>
                                             </div>
-                                            <br>
-                                            <div class="form-group">
-                                                <input type="email" class="form-control form-control-user" placeholder="Correo Electronico">
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" required id="email" type="text" placeholder="email"
+                                                    name="email" />
+                                                <label for="email">Email</label>
                                             </div>
-                                            <br>
-                                            <div class="form-group">
-                                                <input type="password" class="form-control form-control-user" placeholder="Contraseña">
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" required id="password" type="password" placeholder="password"
+                                                    name="password" />
+                                                <label for="password">Contraseña</label>
                                             </div>
-                                            <br>
-                                            <a href="home" class="d-grid btn btn-primary btn-user btn-block">Registarse</a>
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" required id="password" type="password"
+                                                    placeholder="password_confirmation" name="password_confirmation" />
+                                                <label for="password_confirmation">Repetir contraseña</label>
+                                            </div>
+                                            @if ($errors->any())
+                                                <div class="alert alert-danger">
+                                                    <ul>
+                                                        @foreach ($errors->all() as $error)
+                                                            <li>{{ $error }}</li>
+                                                        @endforeach
+                                                    </ul>
+                                                </div>
+                                            @endif
+                                            <div class="d-grid gap-2">
+                                                <button class="btn btn-dark" type="submit">Registrarse</button>
+                                            </div>
                                         </form>
                                         <hr>
                                         <div class="text-center">
-                                            <a class="small" href="login">Iniciar Sesión</a>
+                                            <a class="small" style="color: black;" href="{{ route('login') }}">Inicar Sesión</a>
                                         </div>
                                     </div>
                                 </div>
@@ -49,6 +69,8 @@
                 </div>
             </div>
         </div>
+    </body>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
 </body>
 </html>

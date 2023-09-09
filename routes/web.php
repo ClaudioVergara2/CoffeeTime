@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
 use App\Models\Category;
 use App\Models\Product;
 use GuzzleHttp\Promise\Create;
@@ -18,17 +19,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/home', [AuthController::class, 'landing']);
+Route::get('/landing', [AuthController::class, 'landing'])->name('landing');
 
-Route::get('/menu', [AuthController::class, 'menu']);
+Route::get('/menu', [AuthController::class, 'menu'])->name('menu');
 
-Route::get('/register', [AuthController::class, 'register']);
+Route::get('/register', [AuthController::class, 'register'])->name('register');
 
-Route::get('/login', [AuthController::class, 'index']);
-Route::post('/login', [AuthController::class, 'attempt'])->name('login.attempt');
+Route::group(['prefix' => '/login'], function(){
+    Route::get('/', [AuthController::class, 'showLogin'])->name('login');
+    Route::post('/', [AuthController::class, 'attempt'])->name('login.attempt');
+});
 
+
+Route::group(['prefix' => '/register'], function(){
+    Route::get('/', [AuthController::class, 'showRegister'])->name('register');
+    Route::post('/', [AuthController::class, 'storeAccount'])->name('register.store');
+});
+Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('auth');
 Route::get('/', function () {
-
   /* $category = Category::create(['name' => 'Café']);
   $product = Product::create([
         'category_id' => $category->id,

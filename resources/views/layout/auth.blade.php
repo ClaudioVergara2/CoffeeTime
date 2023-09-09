@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menú</title>
+    <title>Coffee Time</title>
 </head>
 <body style="background-color: #f0d1a9;">
-    <header>
+     <header>
         <nav class="navbar navbar-expand-lg" style="background-color: #D2B48C;">
             <div class="container-fluid">
                 <a class="navbar-brand">
@@ -29,6 +29,6 @@
             </div>
         </nav>
     </header>
-    @yield('menu-content')
+    @yield('main-content')
 </body>
 </html>
